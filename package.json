@@ -1,23 +1,57 @@
 {
   "name": "boost-consulting",
-  "private": true,
   "version": "0.1.0",
-  "type": "module",
-  "engines": {
-    "node": ">=22.12.0 <23"
-  },
+  "private": true,
   "scripts": {
-    "dev": "vite --host 127.0.0.1",
-    "build": "npm run typecheck && vite build",
-    "preview": "vite preview --host 127.0.0.1",
-    "typecheck": "tsc --noEmit",
+    "dev": "next dev --turbopack",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "postinstall": "prisma generate",
+    "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "npm run format:check && npm run build"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build",
+    "db:generate": "prisma generate",
+    "db:validate": "prisma validate",
+    "db:up": "docker compose up -d --wait",
+    "db:down": "docker compose down",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
+    "db:studio": "prisma studio",
+    "db:check": "node --env-file-if-exists=.env scripts/check-database.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.8",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "@clerk/nextjs": "7.9.9",
+    "@prisma/client": "6.12.0",
+    "server-only": "0.0.1"
   },
   "devDependencies": {
-    "vite": "8.3.5",
-    "typescript": "7.0.2",
+    "@playwright/test": "1.62.1",
+    "@types/node": "^22.13.0",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.9",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.32.0",
+    "eslint-config-next": "16.3.8",
+    "postcss": "^8.5.6",
+    "prisma": "6.12.0",
+    "tailwindcss": "3.4.17",
+    "typescript": "5.9.3",
+    "vitest": "4.1.12",
     "prettier": "3.9.10"
+  },
+  "engines": {
+    "node": ">=22.13.0 <23",
+    "npm": "10.x"
+  },
+  "overrides": {
+    "vite": "8.1.6",
+    "postcss-selector-parser": "7.1.7"
   }
 }

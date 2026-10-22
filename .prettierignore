@@ -1,3 +1,10 @@
 node_modules/
+.next/
+out/
 dist/
 package-lock.json
+next-env.d.ts
+playwright-report/
+test-results/
+coverage/
+prisma/
