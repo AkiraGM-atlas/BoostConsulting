@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  font-family: system-ui, sans-serif;
+  color: #17312d;
+  background: #f4f6f2;
+}
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+main {
+  width: min(100%, 760px);
+  padding: clamp(24px, 6vw, 64px);
+  background: white;
+  border-top: 4px solid #28735e;
+}
+h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+}
+p {
+  line-height: 1.8;
+}
+.eyebrow {
+  color: #28735e;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+.note {
+  color: #53635e;
+  font-size: 0.875rem;
+}
